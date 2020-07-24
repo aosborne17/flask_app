@@ -16,21 +16,22 @@ def login():
 
 @auth.route('/login', methods=['POST'])
 def login_post():
-    session['attempt'] = 1
     email = request.form.get('email')
     password = request.form.get('password')
     remember = True if request.form.get('remember') else False
 
     user = User.query.filter_by(email=email).first()
     if not user or not check_password_hash(user.password, password):
-        attempt = int(session.get('attempt'))
-        if attempt == 2:
-            flash('Please check your login details and try again.')
-        if attempt == 3:
-            flash('You have entered your credentials incorrectly too many times')
+        if 'counter' not in session:
+            session['counter'] = 0
+            # using sessions to prevent max number of password attempts
+        session['counter'] = session.get('counter') + 1
+        if session.get('counter') == 3:
+            flash('You have exceeded maximum no of tries')
             abort(404)
-
-
+            session.pop('counter', None)
+        # if the user doesn't exist or password is wrong, reload the page
+        return redirect(url_for('auth.login'))
         flash('Please check your login details and try again.')
         return redirect(url_for('auth.login'))  # if the user doesn't exist or password is wrong, reload the page
 
@@ -74,6 +75,6 @@ def logout():
     return redirect(url_for('main.index'))
 
 
-@auth.route(404)
+@auth.route('/404')
 def page_not_found():
     return render_template('404.html')
