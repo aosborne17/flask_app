@@ -43,9 +43,9 @@ def signup_post():
 
     user = User.query.filter_by(email=email).first # If this returns a user, then the email is already in our database
 
-    if user: # do not understand this part
-        #
-        flash('This Email Address Already Exists, Please Sign In')
+    if not user or not check_password_hash(user.password, password):
+
+        flash('Please check your login details and try again.')
         return redirect(url_for('auth.signup'))
 
     # Here we are creating a new user, their password is hashed
