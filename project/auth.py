@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, request, flash, session, abort
+from flask import Blueprint, render_template, redirect, url_for, request, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from .models import User
 from . import db
@@ -28,7 +28,6 @@ def login_post():
         session['counter'] = session.get('counter') + 1
         if session.get('counter') == 3:
             flash('You have exceeded maximum no of tries')
-            abort(404)
             session.pop('counter', None)
         # if the user doesn't exist or password is wrong, reload the page
         return redirect(url_for('auth.login'))
