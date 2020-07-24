@@ -2,6 +2,10 @@
 
 {% block content %}
 <h1 class="title">
-  Welcome, {{name}}!
+  Welcome, {{name}}, Click <a href="quiz">HERE</a> to take the quiz...
 </h1>
 {% endblock %}
+
+<a href="{{ url_for('auth.signup') }}" class="navbar-item">
+                                Sign Up
+                            </a>
