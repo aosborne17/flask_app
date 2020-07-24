@@ -14,3 +14,8 @@ def index():
 def profile():
     return render_template('profile.html', name=current_user.name)
 
+
+@main.route('/quiz')
+@login_required
+def quiz():
+    return render_template('quiz.html')
