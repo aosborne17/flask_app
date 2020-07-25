@@ -19,3 +19,4 @@ def profile():
 @login_required
 def quiz():
     return render_template('quiz.html')
+

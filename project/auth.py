@@ -5,6 +5,12 @@ from . import db
 from flask_login import login_user, logout_user, login_required
 
 
+# TODO: Add Functionality to the quiz.html page using forms and inputs,
+#  these can then be checked against a txt or some file that stores the answers
+
+# TODO: Create a forbidden site that users cannot enter, this page will have a list of all users
+
+
 auth = Blueprint('auth', __name__)
 
 
@@ -79,6 +85,13 @@ def signup_post():
 def logout():
     logout_user()
     return redirect(url_for('main.index'))
+
+
+@auth.route('/view')
+def view():
+    # Here we are creating a template that will list all of the users on our website
+    # This is done by running a query to our db
+    return render_template('view.html', values=User.query.all())
 
 
 @auth.route('/404')
