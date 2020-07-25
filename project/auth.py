@@ -3,12 +3,16 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from .models import User
 from . import db
 from flask_login import login_user, logout_user, login_required
+from datetime import datetime as dt
 
 
 # TODO: Add Functionality to the quiz.html page using forms and inputs,
 #  these can then be checked against a txt or some file that stores the answers
 
 # TODO: Create a forbidden site that users cannot enter, this page will have a list of all users
+
+# TODO: Add a Column to my User Table which stores what time the user created their account
+# DONE
 
 
 auth = Blueprint('auth', __name__)
@@ -72,7 +76,7 @@ def signup_post():
 
     # Here we are creating a new user, their password is then hashed and stored in the db
     else:
-        new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'))
+        new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'), created=dt.now())
 
     # here we are then adding that user to the database, so when they next come to login we have their details stored
     db.session.add(new_user)

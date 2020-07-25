@@ -1,6 +1,13 @@
 
 
+## Creating the Database
+- In the Python REPL
+- from project import db, create_app
+- db.create_all(app=create_app())
 
+## Running the App
+- SET FLASK_APP=project allows to use 'flask run'
+- SET FLASK_ENV=development allows us to use dev mode
 
 
 ## Common Errors:

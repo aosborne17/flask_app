@@ -2,6 +2,6 @@
 
 {% block content %}
     {% for n in values %}
-        <p>Name: {{n.name}}. Email: {{n.email}}</p>
-    {{% end for %}}
+        <p>Name: {{n.name}} Email: {{n.email}} Created: {{n.created}}</p>
+    {% endfor %}
 {% endblock %}
