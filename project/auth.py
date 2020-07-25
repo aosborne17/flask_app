@@ -15,7 +15,12 @@ from datetime import datetime as dt
 # DONE
 
 # TODO: Change the current stylesheet that I am using, implement my own JS and CSS
+"""
+I am going to create a JSON file that will have all the answers,
+this will be compared to the answer given by the user to find out whether they answered
+the quiz correctly or not
 
+"""
 
 auth = Blueprint('auth', __name__)
 

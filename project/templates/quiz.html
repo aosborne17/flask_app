@@ -6,19 +6,30 @@
     <form action="#" method="post">
         <p> Question 1: ...
             What is the Keyword needed to define a class in Python</p>
-            <input type="text" question="question">
-            <input type="submit" value="Enter">
+            <input type="text" name="question" value="{{
+          request.form.q1 }}">
 
 
         <p> Question 2:....
             What is the Keyword needed to define a function in Python</p>
-            <input type="text" question="question">
-            <input type="submit" value="Enter">
+            <input type="text" name="question" value="{{
+          request.form.q2 }}">
 
         <p> Question 3:....
             What is the built in function used to display information in the terminal</p>
-            <input type="text" question="question">
-            <input type="submit" value="Enter">
+            <input type="text" name="question" value="{{
+          request.form.q3 }}">
+
+        <p> Question 4:....
+            What is the symbol used in Python to represent Equals to </p>
+            <input type="text" name="question" value="{{
+          request.form.q4 }}">
+
+        <div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Submit Answers
+						</button>
+					</div>
 
     </form>
 </div>
