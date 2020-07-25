@@ -14,6 +14,8 @@ from datetime import datetime as dt
 # TODO: Add a Column to my User Table which stores what time the user created their account
 # DONE
 
+# TODO: Change the current stylesheet that I am using, implement my own JS and CSS
+
 
 auth = Blueprint('auth', __name__)
 

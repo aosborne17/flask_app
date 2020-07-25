@@ -1,7 +1,25 @@
 {% extends "base.html" %}
-
+{% block title%} Python Quiz {% endblock %}
 {% block content %}
-<h2> Welcome to the Quiz</h2>
-<p> Question 1: ...
-    What is the Keyword needed to define a class in Python</p>
+<div>
+    <h2> Welcome to the Quiz</h2>
+    <form action="#" method="post">
+        <p> Question 1: ...
+            What is the Keyword needed to define a class in Python</p>
+            <input type="text" question="question">
+            <input type="submit" value="Enter">
+
+
+        <p> Question 2:....
+            What is the Keyword needed to define a function in Python</p>
+            <input type="text" question="question">
+            <input type="submit" value="Enter">
+
+        <p> Question 3:....
+            What is the built in function used to display information in the terminal</p>
+            <input type="text" question="question">
+            <input type="submit" value="Enter">
+
+    </form>
+</div>
 {% endblock %}
