@@ -1,11 +1,9 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
-# from answers import answers
+from answers import question_answers
 
 main = Blueprint('main', __name__)
 
-# answers = {"Q1":  "Class", "Q2":  "def", "Q3": "print()", "Q4":  "=="}
-answers = ["Class", "def", "print()", "=="]
 
 @main.route('/')
 def index():
@@ -23,17 +21,18 @@ def profile():
 def quiz():
     if request.method == 'POST':
         score = 0
-        if request.form['q1'] == answers[0]:
+        if request.form['q1'] == question_answers.get("Q1"):
             score += 1
-        elif request.form['q2'] == answers[1]:
+        if request.form['q2'] == question_answers.get("Q2"):
             score += 1
-        elif request.form['q3'] == answers[2]:
+        if request.form['q3'] == question_answers.get("Q3"):
             score += 1
-        elif request.form['q4'] == answers[3]:
+        if request.form['q4'] == question_answers.get("Q4"):
             score += 1
-        with open("templates/answers.html", 'a') as f:
-            f.write(f"Good Work, You Scored {score} questions correctly!")
-        return redirect(url_for('answers'))
+        # with open("project/templates/answers.html", 'a') as f:
+        #     f.write(f"Good Work, You Scored {score} questions correctly!")
+        return render_template('answers.html', score=score)
+        # return redirect(url_for('main.answers', score=score))
     return render_template('quiz.html')
 
 

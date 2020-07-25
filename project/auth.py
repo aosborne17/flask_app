@@ -50,8 +50,6 @@ def login_post():
             session.pop('counter', None)
             return render_template('404.html')
         # if the user doesn't exist or password is wrong, reload the page
-        return redirect(url_for('auth.login'))
-        flash('Please check your login details and try again.')
         return redirect(url_for('auth.login'))  # if the user doesn't exist or password is wrong, reload the page
     else:
         # if the above check passes, then we know the user has the right credentials
